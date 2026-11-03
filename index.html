@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pravab Basukala Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&display=swap">
+<style>
+/* Layout: dark navy opening with a tilted screen that flattens on scroll, then light paper sections.
+   Doors open to the skills, a pinned counter walks back through the semesters, one big closing line. */
+:root{
+  --simply:#eae9e1; --dove:#eeeee4; --lace:#f4f5f0; --mist:#dad6cb; --pewter:#cbc5b8;
+  --gray:#a9b1ae; --navy:#434b56; --vogue:#596052; --ink:#2a3039;
+  --display:"Outfit","Helvetica Neue",Arial,sans-serif;
+  --body:"DM Sans","Helvetica Neue",Arial,sans-serif;
+  --pad-l:max(16px,env(safe-area-inset-left,0px)); --pad-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--simply);color:var(--ink);font:400 17px/1.6 var(--body);padding-left:var(--pad-l);padding-right:var(--pad-r);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em;line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--vogue);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto}
+.eyebrow{font:500 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--vogue)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin:12px auto 0;max-width:1180px}
+.bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 22px;border-radius:999px;overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(244,245,240,.12) 45%,rgba(255,255,255,.26));
+  -webkit-backdrop-filter:blur(26px) saturate(1.9) brightness(1.08);backdrop-filter:blur(26px) saturate(1.9) brightness(1.08);
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 -1px 0 rgba(42,48,57,.12),inset 0 0 22px rgba(255,255,255,.18),0 18px 44px -12px rgba(42,48,57,.35);
+  color:var(--ink);transition:color .35s}
+.bar::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(180px circle at var(--bx,-200px) -30%,rgba(255,255,255,.4),transparent 70%),linear-gradient(180deg,rgba(255,255,255,.35),transparent 42%)}
+.bar>*{position:relative}
+header.dark .bar{color:var(--lace);border-color:rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(0,0,0,.2),0 18px 44px -12px rgba(0,0,0,.5)}
+header.dark nav a:hover{background:rgba(255,255,255,.16)}
+.logo{color:inherit;font:600 18px/1 var(--display);text-decoration:none;white-space:nowrap}
+nav{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+nav a{text-decoration:none;font-size:15px;padding:8px 14px;border-radius:999px;transition:background .25s}
+nav a:hover{background:rgba(255,255,255,.4)}
+@media(max-width:640px){nav a:not(.keep){display:none}}
+
+/* hero */
+.hero{margin:-62px calc(-1*var(--pad-r)) 0 calc(-1*var(--pad-l));padding:130px var(--pad-r) 90px var(--pad-l);color:var(--lace);
+  background:linear-gradient(165deg,var(--ink) 0%,var(--navy) 62%,var(--vogue) 120%);overflow:hidden;position:relative}
+.hero h1{font-size:clamp(3rem,10vw,8.2rem);font-weight:600;letter-spacing:-.035em;line-height:.95;margin-top:22px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 em{font-style:normal;color:var(--pewter)}
+.intro{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;justify-content:space-between;margin-top:34px}
+.lede{max-width:44ch;color:var(--mist);font-size:19px}
+.role{display:inline-flex;align-items:center;gap:12px;padding:10px 20px 10px 16px;border-radius:999px;border:1px solid rgba(218,214,203,.35);
+  background:rgba(244,245,240,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:17px}
+.role i{width:9px;height:9px;border-radius:50%;background:var(--gray);box-shadow:0 0 0 5px rgba(169,177,174,.25)}
+.role .win{display:block;height:1.6em;overflow:hidden;min-width:15ch}
+.role .win span{display:block;height:1.6em;line-height:1.6em;font-weight:500;color:var(--lace)}
+
+.scene{perspective:1400px;margin-top:60px}
+.screen{position:relative;aspect-ratio:16/9.4;border-radius:26px;overflow:hidden;transform-origin:50% 0;
+  background:linear-gradient(135deg,var(--vogue) 0%,var(--navy) 55%,var(--ink) 100%);
+  border:1px solid rgba(244,245,240,.28);box-shadow:0 60px 120px rgba(0,0,0,.35),inset 0 1px 0 rgba(244,245,240,.25);will-change:transform}
+.screen canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.screen.nogl::after{content:"";position:absolute;left:50%;top:50%;width:46%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,var(--lace),var(--gray) 45%,var(--vogue) 80%)}
+.chips{position:absolute;left:18px;right:18px;bottom:18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:flex-end;pointer-events:none}
+.glass{padding:10px 16px;border-radius:16px;background:rgba(244,245,240,.16);border:1px solid rgba(244,245,240,.32);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--lace);font-size:15px;line-height:1.35}
+.glass b{display:block;font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--pewter);margin-bottom:6px}
+.scroll-hint{margin-top:26px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+
+/* sections */
+section{padding-block:clamp(70px,11vw,150px)}
+.head{display:grid;gap:18px;max-width:760px}
+.head h2{font-size:clamp(2.2rem,5.6vw,4.4rem)}
+.head p{color:var(--navy);max-width:56ch}.doors-sec .head p,.doors-sec .eyebrow{color:var(--mist)}
+
+/* about */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,90px);align-items:start}
+.about p+p{margin-top:18px}
+.facts{display:grid;gap:0;border-top:1px solid var(--pewter)}
+.facts div{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--pewter)}
+.facts dt{color:var(--vogue);font-size:15px}
+.facts dd{margin:0;font-weight:500;text-align:right}
+@media(max-width:820px){.about{grid-template-columns:1fr}}
+
+/* doors */
+.doors-sec{position:relative;z-index:1;overflow:clip;background:radial-gradient(120% 70% at 50% 0%,var(--navy),var(--ink) 70%);color:var(--lace);margin:0 calc(-1*var(--pad-r)) 0 calc(-1*var(--pad-l));padding-inline:var(--pad-l) var(--pad-r)}
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px);margin-top:60px;padding-inline:14px}
+.door{position:relative;height:clamp(430px,44vw,520px);perspective:1100px}
+.back{position:absolute;inset:0;border-radius:999px 999px 18px 18px/260px 260px 18px 18px;background:linear-gradient(180deg,var(--vogue),var(--navy) 70%);color:var(--lace);
+  border:1px solid rgba(244,245,240,.25);padding:104px 26px 26px;display:flex;flex-direction:column;gap:10px;overflow:hidden;box-shadow:inset 0 40px 80px rgba(244,245,240,.18)}
+.back h3{font-size:26px;color:var(--lace)}
+.back ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:11px;font-size:17px;color:var(--lace)}
+.back li{display:flex;gap:10px}
+.back li::before{content:"";flex:none;width:7px;height:7px;margin-top:.62em;border-radius:50%;background:var(--pewter)}
+.panel{position:absolute;inset:0;border:0;font:inherit;text-align:left;cursor:pointer;border-radius:999px 999px 18px 18px/260px 260px 18px 18px;transform-origin:0 50%;
+  transition:transform .85s cubic-bezier(.65,0,.25,1),opacity .5s .2s;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;
+  padding:30px 28px;color:var(--lace);box-shadow:12px 20px 40px rgba(42,48,57,.25)}
+.panel span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.panel strong{font:600 clamp(26px,3vw,32px)/1.1 var(--display)}
+.panel em{font-style:normal;font-size:15px;opacity:.85;margin-top:6px;padding-top:10px;border-top:1px solid rgba(244,245,240,.35)}
+.panel::after{content:"";position:absolute;right:26px;top:52%;width:12px;height:12px;border-radius:50%;background:var(--lace);opacity:.8}
+/* without script the doors stay open, so the text is always readable */
+.panel{transform:rotateY(-115deg);opacity:0;pointer-events:none}
+.js .door:not(.open) .panel{transform:none;opacity:1;pointer-events:auto;transition:transform .85s cubic-bezier(.65,0,.25,1),opacity .3s}
+.js .door.open .panel{transform:rotateY(-115deg);opacity:0;transition:transform .85s cubic-bezier(.65,0,.25,1),opacity .35s .1s}
+.js .door:not(.open) .back ul,.js .door:not(.open) .back h3,.js .door:not(.open) .close{visibility:hidden}
+.close{position:absolute;top:70px;right:22px;z-index:2;font:500 13px/1 var(--body);padding:8px 14px;border-radius:999px;color:var(--lace);background:rgba(244,245,240,.14);border:1px solid rgba(244,245,240,.4);cursor:pointer}
+.close:hover{background:rgba(244,245,240,.28)}
+.js .close{display:inline-block}.close{display:none}
+.doorbar{margin-top:34px}.doorbar .btn{display:none}.js .doorbar .btn{display:inline-flex}
+.p1{background:linear-gradient(170deg,var(--vogue),var(--navy))}
+.p2{background:linear-gradient(170deg,var(--navy),var(--ink))}
+.p3{background:linear-gradient(170deg,var(--gray),var(--vogue))}
+.build{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:10px;margin-top:90px;align-items:center}
+.build b{font:500 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--pewter);margin-right:10px}
+.tag{padding:9px 16px;border-radius:999px;background:rgba(244,245,240,.1);border:1px solid rgba(244,245,240,.3);font-size:15px}
+@media(max-width:900px){.doors{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
+
+/* back in time */
+.time{position:relative;z-index:2;background:var(--vogue);color:var(--lace);margin:0 calc(-1*var(--pad-r)) 0 calc(-1*var(--pad-l));padding:0 var(--pad-r) 0 var(--pad-l)}
+.time .pin{padding-block:clamp(70px,10vw,130px)}
+.time .eyebrow{color:var(--mist)}
+.steps{margin-top:34px;display:grid;gap:44px}
+.step{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:end;border-top:1px solid rgba(218,214,203,.35);padding-top:20px}
+.num{font:600 clamp(5.5rem,22vw,17rem)/.82 var(--display);letter-spacing:-.05em;color:var(--simply)}
+.cap h3{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:10px}
+.cap p{color:var(--mist);max-width:38ch}
+.pinned .steps{position:relative;height:clamp(300px,52vh,460px);margin-top:20px}
+.pinned .step{position:absolute;inset:0;border:0;padding:0;align-content:center}
+.pinned .tpin{height:100vh;overflow:hidden}.pinned .pin{height:100%;display:flex;flex-direction:column;justify-content:center;padding-block:90px 40px}
+.meter{display:none;height:3px;background:rgba(218,214,203,.3);border-radius:3px;margin-top:20px;overflow:hidden}
+.pinned .meter{display:block}
+.meter i{display:block;height:100%;width:100%;background:var(--lace);transform-origin:0 50%;transform:scaleX(0)}
+@media(max-width:700px){.step{grid-template-columns:1fr}.pinned .step{align-content:start;gap:10px}}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:56px}
+.card{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:70px;min-height:380px;padding:26px;border-radius:22px;overflow:hidden;
+  border:1px solid var(--pewter);transform-style:preserve-3d;will-change:transform}
+.card:nth-child(1){background:linear-gradient(160deg,var(--lace),var(--mist))}
+.card:nth-child(2){background:linear-gradient(160deg,var(--mist),var(--gray))}
+.card:nth-child(3){background:linear-gradient(160deg,var(--gray),var(--navy));color:var(--lace)}
+.card .top{display:flex;justify-content:space-between;gap:12px;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+.card h3{font-size:clamp(1.7rem,2.6vw,2.2rem);margin-bottom:12px}
+.card p{font-size:16px;max-width:34ch;opacity:.88}
+.card::before{content:"";position:absolute;right:-60px;top:-60px;width:210px;height:210px;border-radius:50%;mix-blend-mode:multiply;background:var(--pewter);opacity:.7}
+.card:nth-child(3)::before{background:var(--vogue);mix-blend-mode:normal;opacity:.55}
+.card>*{position:relative}
+@media(max-width:900px){.work{grid-template-columns:1fr}.card{min-height:300px}}
+.learn{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:34px}
+.learn b{font:500 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--vogue);margin-right:10px}
+.learn span{padding:9px 16px;border-radius:999px;border:1px dashed var(--gray);font-size:15px}
+.rh{font-size:clamp(1.5rem,3vw,2rem);margin-top:60px}
+.repos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.repos a{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:16px;text-decoration:none;background:var(--lace);border:1px solid var(--pewter);transition:transform .3s,border-color .3s;min-width:0}
+.repos a:hover{transform:translateY(-4px);border-color:var(--vogue)}
+.repos b{font:500 16px/1.3 var(--display);overflow-wrap:anywhere}
+.repos span{font-size:14px;color:var(--navy)}
+@media(max-width:900px){.repos{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.repos{grid-template-columns:1fr}}
+
+/* contact */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:999px;text-decoration:none;font:500 17px/1 var(--body);
+  background:var(--ink);color:var(--lace);border:0;cursor:pointer;transition:background .25s}
+.btn:hover{background:var(--vogue)}
+.btn.alt{background:rgba(244,245,240,.1);border:1px solid rgba(244,245,240,.4)}
+.btn.alt:hover{background:rgba(244,245,240,.2)}
+.end{background:linear-gradient(170deg,var(--navy),var(--ink));color:var(--lace);margin:0 calc(-1*var(--pad-r)) 0 calc(-1*var(--pad-l));padding:clamp(80px,12vw,160px) var(--pad-r) 40px var(--pad-l)}
+.end h2{font-size:clamp(2.8rem,9vw,7.4rem);letter-spacing:-.03em;max-width:12ch}
+.end h2 em{font-style:normal;color:var(--gray)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px}
+.mail{margin-top:22px;color:var(--mist);font-size:16px}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:100px;padding-top:22px;border-top:1px solid rgba(218,214,203,.25);color:var(--gray);font-size:14px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html{background:#eae9e1}
+</style>
+</head>
+<body>
+
+<header><div class="bar"><a class="logo" href="#top">Prabhav</a>
+<nav aria-label="Sections"><a href="#about">About</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#work">Work</a><a class="keep" href="#contact">Contact</a></nav></div></header>
+
+<main id="top">
+<div class="hero">
+ <div class="wrap">
+  <p class="eyebrow" style="color:var(--gray)">BCA student · Kathmandu, Nepal</p>
+  <h1 aria-label="Prabhav Basukala"><span class="ln"><span>Prabhav</span></span><span class="ln"><span><em>Basukala</em></span></span></h1>
+  <div class="intro">
+   <p class="lede">Final semester BCA student. I build web applications, work on ad network data, business development and social media, and I am learning DevOps. Co-founding Vex Scales.</p>
+   <div class="role" aria-live="off"><i></i><span>I work on</span><span class="win"><span>ad network data</span><span>business development</span><span>social media</span><span>web projects</span><span>ad network data</span></span></div>
+  </div>
+  <div class="scene"><div class="screen" id="screen"><canvas id="gl" aria-hidden="true"></canvas>
+   <div class="chips"><div class="glass"><b>Now</b>Semester 8, BCA</div><div class="glass"><b>Since</b>2022</div></div></div></div>
+  <p class="scroll-hint">Scroll</p>
+ </div>
+</div>
+
+<section id="about"><div class="wrap about">
+ <div class="head"><p class="eyebrow">About</p><h2>Numbers, people and a bit of code.</h2></div>
+ <div><p>I started my Bachelor in Computer Applications in 2022. Along the way I built a bike parts store, a fitness web app, and spent a semester as an intern at Ambience Infosys.</p>
+ <p>Outside code I read ad network reports, talk to prospective clients and run social media pages. This site is where those parts meet.</p>
+ <dl class="facts" style="margin:30px 0 0"><div><dt>Studying</dt><dd>BCA, since 2022</dd></div><div><dt>Semester</dt><dd>8 (current)</dd></div><div><dt>Internship</dt><dd>Ambience Infosys, sem 7</dd></div><div><dt>Co-founding</dt><dd>Vex Scales Private Limited</dd></div><div><dt>Based in</dt><dd>Kathmandu</dd></div></dl></div>
+</div></section>
+
+<div class="doors-sec"><section id="skills"><div class="wrap">
+ <div class="head"><p class="eyebrow">Skills</p><h2>Three doors. Open them.</h2><p>Hover over a door, or tap it, to open it. Use the Close button to shut it again.</p></div>
+ <div class="doors">
+  <article class="door" id="d1"><div class="back"><button class="close" type="button" aria-label="Close Ad network data">Close</button><h3>Ad network data</h3><ul><li>Reading campaign and placement reports</li><li>Finding which sources and creatives perform</li><li>Turning raw numbers into short weekly summaries</li></ul></div><button class="panel p1" type="button" aria-expanded="false" aria-controls="d1"><span>Door one</span><strong>Data analysis in an ad network</strong><em>Hover or tap to open</em></button></article>
+  <article class="door" id="d2"><div class="back"><button class="close" type="button" aria-label="Close Business development">Close</button><h3>Business development</h3><ul><li>Finding clients and partners worth approaching</li><li>Writing proposals and follow-ups</li><li>Keeping a clear list of leads and next steps</li></ul></div><button class="panel p2" type="button" aria-expanded="false" aria-controls="d2"><span>Door two</span><strong>Business development</strong><em>Hover or tap to open</em></button></article>
+  <article class="door" id="d3"><div class="back"><button class="close" type="button" aria-label="Close Social media">Close</button><h3>Social media</h3><ul><li>Planning a content calendar</li><li>Posting and replying to the community</li><li>Reading reach and engagement to adjust</li></ul></div><button class="panel p3" type="button" aria-expanded="false" aria-controls="d3"><span>Door three</span><strong>Social media management</strong><em>Hover or tap to open</em></button></article>
+  </div>
+ <div class="doorbar"><button class="btn alt" id="allDoors" type="button">Open all doors</button></div>
+ <div class="build"><b>Also build with</b><span class="tag">Python</span><span class="tag">Django</span><span class="tag">TypeScript</span><span class="tag">HTML and CSS</span><span class="tag">Git and GitHub</span><span class="tag">Learning: Linux, Docker</span></div>
+</div></section></div>
+
+<div class="time" id="journey"><div class="tpin"><div class="pin wrap">
+ <p class="eyebrow">Let's go back in time</p>
+ <div class="steps">
+  <div class="step"><div class="num">08</div><div class="cap"><h3>Semester 8. Now.</h3><p>Final semester. Setting up Vex Scales, learning Linux and Docker, and building this portfolio.</p></div></div>
+  <div class="step"><div class="num">07</div><div class="cap"><h3>Intern at Ambience Infosys</h3><p>Built the College Event Management System, with a full project report.</p></div></div>
+  <div class="step"><div class="num">06</div><div class="cap"><h3>Project II: fitness web app</h3><p>A web application for fitness, built as the semester six project.</p></div></div>
+  <div class="step"><div class="num">04</div><div class="cap"><h3>Project I: Bike Parts E-commerce</h3><p>An online store for bike parts, the first full project of the degree.</p></div></div>
+  <div class="step"><div class="num">2022</div><div class="cap"><h3>BCA begins</h3><p>Semester one. Everything above started here.</p></div></div>
+ </div>
+ <div class="meter"><i></i></div>
+</div></div></div>
+
+<section id="work"><div class="wrap">
+ <div class="head"><p class="eyebrow">Work</p><h2>What I have built so far.</h2></div>
+ <div class="work">
+  <article class="card"><div class="top"><span>Semester 4</span><span>Project I</span></div><div><h3>Bike Parts E-commerce</h3><p>My first complete web project: an online store for bike parts with a catalogue, cart and order flow.</p></div></article>
+  <article class="card"><div class="top"><span>Semester 6</span><span>Project II</span></div><div><h3>Fitness web app</h3><p>A larger project built around clear screens and a structured data model.</p></div></article>
+  <article class="card"><div class="top"><span>Semester 7</span><span>Internship</span></div><div><h3>College Event Management System</h3><p>Built at Ambience Infosys: interface, server logic and database, plus a full project report.</p></div></article>
+  <article class="card"><div class="top"><span>Semester 8</span><span>Ongoing</span></div><div><h3>Vex Scales Private Limited</h3><p>An IT and software company I am co-founding. Registration is in progress in Bhaktapur, Nepal.</p></div></article>
+ </div>
+ <div class="learn"><b>Learning now</b><span>Linux and Bash</span><span>Docker and Compose</span><span>Networking</span><span>GitHub Actions</span><span>Kubernetes</span><span>AWS</span></div>
+ <h3 class="rh">Code on GitHub</h3>
+ <div class="repos">
+  <a href="https://github.com/PravabMarco/PravabMarco.github.io" target="_blank" rel="noopener"><b>PravabMarco.github.io</b><span>Personal site on GitHub Pages · HTML</span></a>
+  <a href="https://github.com/PravabMarco/portfolio-website" target="_blank" rel="noopener"><b>portfolio-website</b><span>Static portfolio · HTML, CSS, JS</span></a>
+  <a href="https://github.com/PravabMarco/vex-edge-media" target="_blank" rel="noopener"><b>vex-edge-media</b><span>React, Vite, Tailwind · TypeScript</span></a>
+  <a href="https://github.com/PravabMarco/VexEdgeAds" target="_blank" rel="noopener"><b>VexEdgeAds</b><span>Multi-page company site · SCSS</span></a>
+  <a href="https://github.com/PravabMarco/PythonDjango6th" target="_blank" rel="noopener"><b>PythonDjango6th</b><span>Python practice and OOP · Python</span></a>
+  <a href="https://github.com/PravabMarco/justForAds" target="_blank" rel="noopener"><b>justForAds</b><span>Single-page ads website · HTML</span></a>
+ </div>
+ <div class="code"><p>The rest of my code, including smaller experiments, lives on GitHub.</p><a class="btn" href="https://github.com/PravabMarco" target="_blank" rel="noopener">github.com/PravabMarco</a></div>
+</div></section>
+
+<div class="end" id="contact"><div class="wrap">
+ <p class="eyebrow" style="color:var(--gray)">Contact</p>
+ <h2 style="margin-top:20px">Got a project? <em>Let's build it together.</em></h2>
+ <div class="cta" id="cta"><a class="btn alt" href="https://linkedin.com/in/prabhav-basukala" target="_blank" rel="noopener">Message on LinkedIn</a><a class="btn alt" href="https://github.com/PravabMarco" target="_blank" rel="noopener">GitHub</a></div>
+ <p class="mail" id="mail" hidden></p>
+ <footer><span>Pravab Basukala · Kathmandu</span></footer>
+</div></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+var CONFIG={email:"",linkedin:""};   // add an email to show it in the contact area
+try{
+  if(CONFIG.linkedin){var a=document.createElement("a");a.className="btn alt";a.href=CONFIG.linkedin;a.target="_blank";a.rel="noopener";a.textContent="LinkedIn";document.getElementById("cta").appendChild(a)}
+  if(CONFIG.email){var m=document.getElementById("mail");m.hidden=false;m.textContent="Email: "+CONFIG.email}
+}catch(e){}
+
+(function(){var hd=document.querySelector("header"),bar=document.querySelector(".bar"),dk=[].slice.call(document.querySelectorAll(".hero,.doors-sec,.time,.end"));
+  function chk(){var y=hd.getBoundingClientRect().top+hd.offsetHeight/2,on=dk.some(function(e){var r=e.getBoundingClientRect();return r.top<=y&&r.bottom>=y});hd.classList.toggle("dark",on)}
+  addEventListener("scroll",chk,{passive:true});addEventListener("resize",chk);chk();
+  bar.addEventListener("pointermove",function(e){var r=bar.getBoundingClientRect();bar.style.setProperty("--bx",(e.clientX-r.left)+"px")})})();
+/* doors: hover opens, click keeps open, button opens all */
+(function(){var ds=[].slice.call(document.querySelectorAll(".door")),sec=document.querySelector(".doors-sec"),all=document.getElementById("allDoors"),fine=matchMedia("(hover:hover) and (pointer:fine)").matches;
+  if(!sec)return;sec.classList.add("js");document.documentElement.classList.add("js");
+  function set(d,on){d.classList.toggle("open",on);var p=d.querySelector(".panel");if(p)p.setAttribute("aria-expanded",on?"true":"false");sync()}
+  function sync(){if(all)all.textContent=ds.every(function(d){return d.classList.contains("open")})?"Close all doors":"Open all doors"}
+  ds.forEach(function(d){var pin=false;
+    d.querySelector(".panel").addEventListener("click",function(){pin=true;set(d,true)});
+    d.querySelector(".close").addEventListener("click",function(){pin=false;set(d,false);d.querySelector(".panel").focus()});
+    if(fine){d.addEventListener("pointerenter",function(){set(d,true)});d.addEventListener("pointerleave",function(){if(!pin)set(d,false)})}
+    d._unpin=function(){pin=false};d._pin=function(){pin=true}});
+  if(all)all.addEventListener("click",function(){var open=!ds.every(function(d){return d.classList.contains("open")});ds.forEach(function(d){open?d._pin():d._unpin();set(d,open)})});
+  sync()})();
+var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- 3D orb (palette only) ---------- */
+var screenEl=document.getElementById("screen"),canvas=document.getElementById("gl"),visible=true,renderer,tick=function(){};
+function hex(h){return new THREE.Color(h)}
+try{
+  if(!window.THREE)throw 0;
+  renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(36,2,.1,50);cam.position.set(0,0,8);
+  scene.add(new THREE.AmbientLight(0xf4f5f0,.85));
+  var dl=new THREE.DirectionalLight(0xffffff,.35);dl.position.set(3,4,6);scene.add(dl);
+  var pl=new THREE.PointLight(0xa9b1ae,.25,30);pl.position.set(-5,-2,4);scene.add(pl);
+  function rr(w,h,r){var x=-w/2,y=-h/2,sh=new THREE.Shape();sh.moveTo(x+r,y);sh.lineTo(x+w-r,y);sh.quadraticCurveTo(x+w,y,x+w,y+r);sh.lineTo(x+w,y+h-r);sh.quadraticCurveTo(x+w,y+h,x+w-r,y+h);sh.lineTo(x+r,y+h);sh.quadraticCurveTo(x,y+h,x,y+h-r);sh.lineTo(x,y+r);sh.quadraticCurveTo(x,y,x+r,y);return sh}
+  var geo=new THREE.ExtrudeGeometry(rr(3,1.9,.28),{depth:.05,bevelEnabled:true,bevelThickness:.03,bevelSize:.03,bevelSegments:4,curveSegments:14});
+  geo.translate(0,.95,0);var edge=new THREE.EdgesGeometry(geo,40);
+  var cols=["#2a3039","#434b56","#596052","#7d867f","#a9b1ae","#cbc5b8"],slabs=[],stack=new THREE.Group();scene.add(stack);stack.scale.setScalar(.78);
+  cols.forEach(function(c,i){
+    var m=new THREE.Mesh(geo,new THREE.MeshLambertMaterial({color:hex(c),transparent:true,opacity:.9}));
+    var l=new THREE.LineSegments(edge,new THREE.LineBasicMaterial({color:hex("#f4f5f0"),transparent:true,opacity:.35}));
+    m.add(l);m.position.set(0,-1.3,i*.16);stack.add(m);slabs.push(m)});
+  var mx=0,my=0,tx=0,ty=0;
+  screenEl.addEventListener("pointermove",function(e){var b=screenEl.getBoundingClientRect();tx=(e.clientX-b.left)/b.width*2-1;ty=(e.clientY-b.top)/b.height*2-1},{passive:true});
+  function size(){var w=screenEl.clientWidth,h=screenEl.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.position.z=w/h<1.2?11:8.2;cam.updateProjectionMatrix()}
+  if(window.ResizeObserver)new ResizeObserver(size).observe(screenEl);else window.addEventListener("resize",size);size();
+  var t0=performance.now();
+  tick=function(now){var t=reduce?2:(now-t0)/1000;mx+=(tx-mx)*.05;my+=(ty-my)*.05;
+    stack.rotation.y=Math.sin(t*.3)*.18+mx*.3;stack.rotation.x=my*.12;
+    slabs.forEach(function(m,i){var k=.5+.5*Math.sin(t*.8);m.rotation.z=(i-2.5)*(.2+.07*k);m.position.y=-1.3+Math.sin(t*.7+i*.6)*.04});
+    renderer.render(scene,cam)};
+  new IntersectionObserver(function(en){visible=en[0].isIntersecting}).observe(screenEl);
+  (function loop(now){requestAnimationFrame(loop);if(visible&&!document.hidden)tick(now)})(performance.now());
+}catch(e){screenEl.classList.add("nogl")}
+
+/* ---------- motion ---------- */
+if(!window.gsap||!window.ScrollTrigger||reduce)return;
+gsap.registerPlugin(ScrollTrigger);
+
+/* headline reveal */
+gsap.from(".hero h1 .ln>span",{yPercent:110,duration:1.1,ease:"power4.out",stagger:.12,delay:.1});
+gsap.from(".lede,.role,.hero .eyebrow",{y:24,opacity:0,duration:.9,ease:"power3.out",stagger:.1,delay:.5});
+
+/* rotating role text */
+var win=document.querySelector(".role .win");
+if(win){var items=win.children.length-1,h=win.firstElementChild.offsetHeight||27;
+  var rt=gsap.timeline({repeat:-1});
+  for(var i=1;i<=items;i++){rt.to(win.children,{y:-i*h,duration:.6,ease:"power3.inOut"},"+=1.4")}
+  rt.set(win.children,{y:0});}
+
+/* the screen starts tilted back, then lays flat as you scroll */
+gsap.fromTo(screenEl,{rotateX:34,rotateZ:-5,scale:.82,yPercent:6},{rotateX:0,rotateZ:0,scale:1,yPercent:0,ease:"none",
+  scrollTrigger:{trigger:".scene",start:"top 92%",end:"top 22%",scrub:.6}});
+
+/* about + generic reveals */
+gsap.utils.toArray(".head,.about>div:last-child,.code,.end h2,.cta,.mail").forEach(function(el){
+  gsap.from(el,{y:50,opacity:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%",once:true}})});
+
+/* counting back in time: pinned, numerals roll over */
+var time=document.querySelector(".time");
+if(time){
+  time.classList.add("pinned");
+  var steps=gsap.utils.toArray(".step"),tl=gsap.timeline({defaults:{ease:"power2.inOut"},
+    scrollTrigger:{trigger:".time",start:"top top",end:"+="+(steps.length*80)+"%",pin:".tpin",pinSpacing:true,invalidateOnRefresh:true,refreshPriority:-1,scrub:.6,anticipatePin:1}});
+  steps.forEach(function(s,i){if(i)gsap.set(s,{autoAlpha:0})});
+  gsap.set(".time .pin",{});
+  steps.forEach(function(s,i){
+    if(i===0)return;
+    var prev=steps[i-1],at=i*1.7;
+    var X={immediateRender:false};
+    tl.fromTo(prev.querySelector(".num"),{yPercent:0,rotateX:0,opacity:1},{yPercent:-60,rotateX:55,opacity:0,duration:.8,immediateRender:false},at-.8)
+      .fromTo(prev.querySelector(".cap"),{y:0,opacity:1},{y:-30,opacity:0,duration:.6,immediateRender:false},at-.8)
+      .fromTo(prev,{autoAlpha:1},{autoAlpha:0,duration:.01,immediateRender:false},at)
+      .fromTo(s,{autoAlpha:0},{autoAlpha:1,duration:.01,immediateRender:false},at)
+      .fromTo(s.querySelector(".num"),{yPercent:60,rotateX:-55,opacity:0},{yPercent:0,rotateX:0,opacity:1,duration:.8,immediateRender:false},at)
+      .fromTo(s.querySelector(".cap"),{y:30,opacity:0},{y:0,opacity:1,duration:.6,immediateRender:false},at+.1);
+    tl.to({},{duration:.4});
+  });
+  tl.to(".meter i",{scaleX:1,ease:"none",duration:tl.duration()},0);
+}
+
+/* work cards: lift and tilt */
+gsap.utils.toArray(".card").forEach(function(c,i){
+  gsap.from(c,{y:80,opacity:0,rotateX:-12,duration:1,ease:"power3.out",delay:i*.08,scrollTrigger:{trigger:c,start:"top 90%",once:true}});
+  if(window.matchMedia("(hover:hover)").matches){
+    var rx=gsap.quickTo(c,"rotateX",{duration:.5}),ry=gsap.quickTo(c,"rotateY",{duration:.5});
+    c.addEventListener("pointermove",function(e){var b=c.getBoundingClientRect();ry(((e.clientX-b.left)/b.width-.5)*10);rx(-((e.clientY-b.top)/b.height-.5)*10)});
+    c.addEventListener("pointerleave",function(){rx(0);ry(0)});
+  }
+});
+
+/* magnetic buttons */
+if(window.matchMedia("(hover:hover)").matches)document.querySelectorAll(".btn").forEach(function(b){
+  var x=gsap.quickTo(b,"x",{duration:.4}),y=gsap.quickTo(b,"y",{duration:.4});
+  b.addEventListener("pointermove",function(e){var r=b.getBoundingClientRect();x((e.clientX-r.left-r.width/2)*.25);y((e.clientY-r.top-r.height/2)*.35)});
+  b.addEventListener("pointerleave",function(){x(0);y(0)});
+});
+window.addEventListener("load",function(){ScrollTrigger.refresh()});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){ScrollTrigger.refresh()});
+setTimeout(function(){ScrollTrigger.refresh()},1200);
+})();
+</script>
+
+</body>
+</html>
